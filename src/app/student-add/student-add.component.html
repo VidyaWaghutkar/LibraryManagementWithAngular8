@@ -1,0 +1,60 @@
+<div class="card"></div>
+<div class="card-body">
+
+<table class="table table-hover">
+  <thead>
+  <tr>
+      <td>Book Name</td>
+      <td>Book Description</td>
+      <td>Book Price</td>
+      <td>Student Name</td>
+      <td>Student Id</td>
+      <td>Issue Date</td>
+      <td colspan="2">Actions</td>
+  </tr>
+  </thead>
+
+  <tbody>
+      <tr *ngFor="let book of books">
+          <td>{{ book.BookName }}</td>
+          <td>{{ book.BookDescription }}</td>
+          <td>{{ book.BookPrice }}</td>
+
+          <td>
+
+            <input type="text" class="form-control"
+            StudentName="StudentName"
+              #StudentName/>
+
+
+
+            </td>
+<td>
+            <input type="text" class="form-control"
+            studentId="StudentId"
+              #StudentId />
+            </td>
+
+
+            <td>
+               <input type="text" class="form-control"
+               issueDate="IssueDate"
+                #IssueDate
+              /></td>
+
+
+<td>
+              <button (click) = "addStudent(book.BookName,book.BookDescription,book.BookPrice,StudentName.value, StudentId.value, IssueDate.value)" type="submit" class="btn btn-primary"
+              >
+                Order
+              </button>
+            </td>
+               <a routerLink="../orderDetails" class="nav-link" routerLinkActive="active">
+                Order details
+                </a>
+
+      </tr>
+
+  </tbody>
+</table>
+

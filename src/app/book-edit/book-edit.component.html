@@ -1,0 +1,49 @@
+
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="angForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4">Book Name</label>
+        <input type="text" class="form-control"
+          formControlName="BookName"
+          #BookName
+          [(ngModel)] = "book.BookName"/>
+      </div>
+      <div *ngIf="angForm.controls['BookName'].invalid && (angForm.controls['BookName'].dirty || angForm.controls['BookName'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['BookName'].errors.required">
+          Book Name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Book Description </label>
+        <textarea class="form-control" rows = 7 cols = "5"
+        formControlName="BookDescription"
+        #BookDescription [(ngModel)] = "book.BookDescription"></textarea>
+      </div>
+      <div *ngIf="angForm.controls['BookDescription'].invalid && (angForm.controls['BookDescription'].dirty || angForm.controls['BookDescription'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['BookDescription'].errors.required">
+          Book Description is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Book Price</label>
+        <input type="text" class="form-control"
+          formControlName="BookPrice"
+          #BookPrice
+          [(ngModel)] = "book.BookPrice"
+        />
+      </div>
+      <div *ngIf="angForm.controls['BOokPrice'].invalid && (angForm.controls['BookPrice'].dirty || angForm.controls['BookPrice'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['BookPrice'].errors.required">
+          Book Price is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <button (click) = "updateBook(BookName.value, BookDescription.value, BookPrice.value)" type="submit" class="btn btn-primary"
+        [disabled]="angForm.invalid" >
+          Update Book
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
